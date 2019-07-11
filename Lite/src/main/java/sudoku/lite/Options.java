@@ -18,7 +18,6 @@
  */
 package sudoku.lite;
 
-import sudoku.lite.*;
 import sudoku.lite.generator.GeneratorPattern;
 
 import java.awt.*;
@@ -52,111 +51,111 @@ public final class Options {
 //            new DifficultyLevel(DifficultyType.HARD, 1600, "Hard", new Color(255, 255, 100), Color.BLACK),
 //            new DifficultyLevel(DifficultyType.UNFAIR, 1800, "Unfair", new Color(255, 150, 80), Color.BLACK),
 //            new DifficultyLevel(DifficultyType.EXTREME, Integer.MAX_VALUE, "Extreme", new Color(255, 100, 100), Color.BLACK)
-            new DifficultyLevel(DifficultyType.INCOMPLETE, 0, "Incomplete", Color.BLACK, Color.WHITE),
-            new DifficultyLevel(DifficultyType.EASY, 400, "Easy", Color.WHITE, Color.BLACK),
-            new DifficultyLevel(DifficultyType.MEDIUM, 500, "Medium", new Color(100, 255, 100), Color.BLACK),
-            new DifficultyLevel(DifficultyType.HARD, 600, "Hard", new Color(255, 255, 100), Color.BLACK),
-            new DifficultyLevel(DifficultyType.UNFAIR, 700, "Unfair", new Color(255, 150, 80), Color.BLACK),
-            new DifficultyLevel(DifficultyType.EXTREME, Integer.MAX_VALUE, "Extreme", new Color(255, 100, 100), Color.BLACK)
+            new DifficultyLevel(DifficultyType.INCOMPLETE, 0, "Incomplete"),
+            new DifficultyLevel(DifficultyType.EASY, 600, "Easy"),
+            new DifficultyLevel(DifficultyType.MEDIUM, 1000, "Medium"),
+            new DifficultyLevel(DifficultyType.HARD, 1600, "Hard"),
+            new DifficultyLevel(DifficultyType.UNFAIR, 2100, "Unfair"),
+            new DifficultyLevel(DifficultyType.EXTREME, Integer.MAX_VALUE, "Extreme")
     };
 
     private DifficultyLevel[] difficultyLevels = null;
     // Reihenfolge und Konfiguration der SolutionSteps
     // ACHTUNG: New solver steps must be added at the end of the array! The position is determined by "index"
     public static final StepConfig[] DEFAULT_SOLVER_STEPS = {
-            new StepConfig(Integer.MAX_VALUE - 1, SolutionType.INCOMPLETE, DifficultyType.INCOMPLETE.ordinal(), SolutionCategory.LAST_RESORT, 0, 0, false, false, Integer.MAX_VALUE - 1, false, false),
-            new StepConfig(Integer.MAX_VALUE, SolutionType.GIVE_UP, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 20000, 0, true, false, Integer.MAX_VALUE, true, false),
-            new StepConfig(100, SolutionType.FULL_HOUSE, DifficultyType.EASY.ordinal(), SolutionCategory.SINGLES, 4, 0, true, true, 100, true, false),
-            new StepConfig(200, SolutionType.NAKED_SINGLE, DifficultyType.EASY.ordinal(), SolutionCategory.SINGLES, 4, 0, true, true, 200, true, false),
-            new StepConfig(300, SolutionType.HIDDEN_SINGLE, DifficultyType.EASY.ordinal(), SolutionCategory.SINGLES, 14, 0, true, true, 300, true, false),
-            new StepConfig(1000, SolutionType.LOCKED_PAIR, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 40, 0, true, true, 1000, true, false),
-            new StepConfig(1100, SolutionType.LOCKED_TRIPLE, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 60, 0, true, true, 1100, true, false),
+            new StepConfig(Integer.MAX_VALUE - 1, SolutionType.INCOMPLETE, DifficultyType.INCOMPLETE.ordinal(), SolutionCategory.LAST_RESORT, 0, 0, false, false, Integer.MAX_VALUE - 1, false),
+            new StepConfig(Integer.MAX_VALUE, SolutionType.GIVE_UP, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 20000, 0, true, false, Integer.MAX_VALUE, false),
+            new StepConfig(100, SolutionType.FULL_HOUSE, DifficultyType.EASY.ordinal(), SolutionCategory.SINGLES, 4, 0, true, true, 100, false),
+            new StepConfig(200, SolutionType.NAKED_SINGLE, DifficultyType.EASY.ordinal(), SolutionCategory.SINGLES, 4, 0, true, true, 200, false),
+            new StepConfig(300, SolutionType.HIDDEN_SINGLE, DifficultyType.EASY.ordinal(), SolutionCategory.SINGLES, 14, 0, true, true, 300, false),
+            new StepConfig(1000, SolutionType.LOCKED_PAIR, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 40, 0, true, true, 1000, false),
+            new StepConfig(1100, SolutionType.LOCKED_TRIPLE, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 60, 0, true, true, 1100, false),
             //        new StepConfig(1200, SolutionType.LOCKED_CANDIDATES, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 50, 0, true, true, 1200, true, false),
-            new StepConfig(1200, SolutionType.LOCKED_CANDIDATES_1, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 50, 0, true, true, 1200, true, false),
-            new StepConfig(1300, SolutionType.NAKED_PAIR, DifficultyType.MEDIUM.ordinal(), SolutionCategory.SUBSETS, 60, 0, true, true, 1300, true, false),
-            new StepConfig(1400, SolutionType.NAKED_TRIPLE, DifficultyType.MEDIUM.ordinal(), SolutionCategory.SUBSETS, 80, 0, true, true, 1400, true, false),
-            new StepConfig(1500, SolutionType.HIDDEN_PAIR, DifficultyType.MEDIUM.ordinal(), SolutionCategory.SUBSETS, 70, 0, true, true, 1500, true, false),
-            new StepConfig(1600, SolutionType.HIDDEN_TRIPLE, DifficultyType.MEDIUM.ordinal(), SolutionCategory.SUBSETS, 100, 0, true, true, 1600, true, false),
-            new StepConfig(2000, SolutionType.NAKED_QUADRUPLE, DifficultyType.HARD.ordinal(), SolutionCategory.SUBSETS, 120, 0, true, true, 2000, true, false),
-            new StepConfig(2100, SolutionType.HIDDEN_QUADRUPLE, DifficultyType.HARD.ordinal(), SolutionCategory.SUBSETS, 150, 0, true, true, 2100, true, false),
-            new StepConfig(2200, SolutionType.X_WING, DifficultyType.HARD.ordinal(), SolutionCategory.BASIC_FISH, 140, 0, true, false, 2200, false, false),
-            new StepConfig(2300, SolutionType.SWORDFISH, DifficultyType.HARD.ordinal(), SolutionCategory.BASIC_FISH, 150, 0, true, false, 2300, false, false),
-            new StepConfig(2400, SolutionType.JELLYFISH, DifficultyType.HARD.ordinal(), SolutionCategory.BASIC_FISH, 160, 0, true, false, 2400, false, false),
-            new StepConfig(2500, SolutionType.SQUIRMBAG, DifficultyType.UNFAIR.ordinal(), SolutionCategory.BASIC_FISH, 470, 0, false, false, 2500, false, false),
-            new StepConfig(2600, SolutionType.WHALE, DifficultyType.UNFAIR.ordinal(), SolutionCategory.BASIC_FISH, 470, 0, false, false, 2600, false, false),
-            new StepConfig(2700, SolutionType.LEVIATHAN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.BASIC_FISH, 470, 0, false, false, 2700, false, false),
-            new StepConfig(2800, SolutionType.REMOTE_PAIR, DifficultyType.HARD.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 110, 0, true, true, 2800, false, false),
-            new StepConfig(2900, SolutionType.BUG_PLUS_1, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 2900, false, false),
-            new StepConfig(3000, SolutionType.SKYSCRAPER, DifficultyType.HARD.ordinal(), SolutionCategory.SINGLE_DIGIT_PATTERNS, 130, 0, true, true, 3000, false, false),
-            new StepConfig(3200, SolutionType.W_WING, DifficultyType.HARD.ordinal(), SolutionCategory.WINGS, 150, 0, true, true, 3200, false, false),
-            new StepConfig(3100, SolutionType.TWO_STRING_KITE, DifficultyType.HARD.ordinal(), SolutionCategory.SINGLE_DIGIT_PATTERNS, 150, 0, true, true, 3100, false, false),
-            new StepConfig(3300, SolutionType.XY_WING, DifficultyType.HARD.ordinal(), SolutionCategory.WINGS, 160, 0, true, true, 3300, false, false),
-            new StepConfig(3400, SolutionType.XYZ_WING, DifficultyType.HARD.ordinal(), SolutionCategory.WINGS, 180, 0, true, true, 3400, false, false),
-            new StepConfig(3500, SolutionType.UNIQUENESS_1, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3500, false, false),
-            new StepConfig(3600, SolutionType.UNIQUENESS_2, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3600, false, false),
-            new StepConfig(3700, SolutionType.UNIQUENESS_3, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3700, false, false),
-            new StepConfig(3800, SolutionType.UNIQUENESS_4, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3800, false, false),
-            new StepConfig(3900, SolutionType.UNIQUENESS_5, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3900, false, false),
-            new StepConfig(4000, SolutionType.UNIQUENESS_6, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 4000, false, false),
-            new StepConfig(4100, SolutionType.FINNED_X_WING, DifficultyType.HARD.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 130, 0, true, false, 4100, false, false),
-            new StepConfig(4200, SolutionType.SASHIMI_X_WING, DifficultyType.HARD.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 150, 0, true, false, 4200, false, false),
-            new StepConfig(4300, SolutionType.FINNED_SWORDFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 200, 0, true, false, 4300, false, false),
-            new StepConfig(4400, SolutionType.SASHIMI_SWORDFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 240, 0, true, false, 4400, false, false),
-            new StepConfig(4500, SolutionType.FINNED_JELLYFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 250, 0, true, false, 4500, false, false),
-            new StepConfig(4600, SolutionType.SASHIMI_JELLYFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 260, 0, true, false, 4600, false, false),
-            new StepConfig(4700, SolutionType.FINNED_SQUIRMBAG, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 4700, false, false),
-            new StepConfig(4800, SolutionType.SASHIMI_SQUIRMBAG, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 4800, false, false),
-            new StepConfig(4900, SolutionType.FINNED_WHALE, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 4900, false, false),
-            new StepConfig(5000, SolutionType.SASHIMI_WHALE, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 5000, false, false),
-            new StepConfig(5100, SolutionType.FINNED_LEVIATHAN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 5100, false, false),
-            new StepConfig(5200, SolutionType.SASHIMI_LEVIATHAN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 5200, false, false),
-            new StepConfig(5300, SolutionType.SUE_DE_COQ, DifficultyType.UNFAIR.ordinal(), SolutionCategory.MISCELLANEOUS, 250, 0, true, true, 5300, false, false),
-            new StepConfig(5400, SolutionType.X_CHAIN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 260, 0, true, true, 5400, false, false),
-            new StepConfig(5500, SolutionType.XY_CHAIN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 260, 0, true, true, 5500, false, false),
-            new StepConfig(5600, SolutionType.NICE_LOOP, DifficultyType.UNFAIR.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 280, 0, true, true, 5600, false, false),
-            new StepConfig(5700, SolutionType.ALS_XZ, DifficultyType.UNFAIR.ordinal(), SolutionCategory.ALMOST_LOCKED_SETS, 300, 0, true, true, 5700, false, false),
-            new StepConfig(5800, SolutionType.ALS_XY_WING, DifficultyType.UNFAIR.ordinal(), SolutionCategory.ALMOST_LOCKED_SETS, 320, 0, true, true, 5800, false, false),
-            new StepConfig(5900, SolutionType.ALS_XY_CHAIN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.ALMOST_LOCKED_SETS, 340, 0, true, true, 5900, false, false),
-            new StepConfig(6000, SolutionType.DEATH_BLOSSOM, DifficultyType.UNFAIR.ordinal(), SolutionCategory.ALMOST_LOCKED_SETS, 360, 0, false, true, 6000, false, false),
-            new StepConfig(6100, SolutionType.FRANKEN_X_WING, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FRANKEN_FISH, 300, 0, true, false, 6100, false, false),
-            new StepConfig(6200, SolutionType.FRANKEN_SWORDFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FRANKEN_FISH, 350, 0, true, false, 6200, false, false),
-            new StepConfig(6300, SolutionType.FRANKEN_JELLYFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FRANKEN_FISH, 370, 0, false, false, 6300, false, false),
-            new StepConfig(6400, SolutionType.FRANKEN_SQUIRMBAG, DifficultyType.EXTREME.ordinal(), SolutionCategory.FRANKEN_FISH, 470, 0, false, false, 6400, false, false),
-            new StepConfig(6500, SolutionType.FRANKEN_WHALE, DifficultyType.EXTREME.ordinal(), SolutionCategory.FRANKEN_FISH, 470, 0, false, false, 6500, false, false),
-            new StepConfig(6600, SolutionType.FRANKEN_LEVIATHAN, DifficultyType.EXTREME.ordinal(), SolutionCategory.FRANKEN_FISH, 470, 0, false, false, 6600, false, false),
-            new StepConfig(6700, SolutionType.FINNED_FRANKEN_X_WING, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 390, 0, true, false, 6700, false, false),
-            new StepConfig(6800, SolutionType.FINNED_FRANKEN_SWORDFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 410, 0, true, false, 6800, false, false),
-            new StepConfig(6900, SolutionType.FINNED_FRANKEN_JELLYFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 430, 0, false, false, 6900, false, false),
-            new StepConfig(7000, SolutionType.FINNED_FRANKEN_SQUIRMBAG, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 470, 0, false, false, 7000, false, false),
-            new StepConfig(7100, SolutionType.FINNED_FRANKEN_WHALE, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 470, 0, false, false, 7100, false, false),
-            new StepConfig(7200, SolutionType.FINNED_FRANKEN_LEVIATHAN, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 470, 0, false, false, 7200, false, false),
-            new StepConfig(7300, SolutionType.MUTANT_X_WING, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 450, 0, false, false, 7300, false, false),
-            new StepConfig(7400, SolutionType.MUTANT_SWORDFISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 450, 0, false, false, 7400, false, false),
-            new StepConfig(7500, SolutionType.MUTANT_JELLYFISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 450, 0, false, false, 7500, false, false),
-            new StepConfig(7600, SolutionType.MUTANT_SQUIRMBAG, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 470, 0, false, false, 7600, false, false),
-            new StepConfig(7700, SolutionType.MUTANT_WHALE, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 470, 0, false, false, 7700, false, false),
-            new StepConfig(7800, SolutionType.MUTANT_LEVIATHAN, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 470, 0, false, false, 7800, false, false),
-            new StepConfig(7900, SolutionType.FINNED_MUTANT_X_WING, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 7900, false, false),
-            new StepConfig(8000, SolutionType.FINNED_MUTANT_SWORDFISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8000, false, false),
-            new StepConfig(8100, SolutionType.FINNED_MUTANT_JELLYFISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8100, false, false),
-            new StepConfig(8200, SolutionType.FINNED_MUTANT_SQUIRMBAG, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8200, false, false),
-            new StepConfig(8300, SolutionType.FINNED_MUTANT_WHALE, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8300, false, false),
-            new StepConfig(8400, SolutionType.FINNED_MUTANT_LEVIATHAN, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8400, false, false),
-            new StepConfig(8700, SolutionType.TEMPLATE_SET, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 10000, 0, false, false, 8700, false, false),
-            new StepConfig(8800, SolutionType.TEMPLATE_DEL, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 10000, 0, false, false, 8800, false, false),
-            new StepConfig(8500, SolutionType.FORCING_CHAIN, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 500, 0, true, false, 8500, false, false),
-            new StepConfig(8600, SolutionType.FORCING_NET, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 700, 0, true, false, 8600, false, false),
-            new StepConfig(8900, SolutionType.BRUTE_FORCE, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 10000, 0, true, false, 8900, false, false),
-            new StepConfig(5650, SolutionType.GROUPED_NICE_LOOP, DifficultyType.UNFAIR.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 300, 0, true, true, 5650, false, false),
-            new StepConfig(3170, SolutionType.EMPTY_RECTANGLE, DifficultyType.HARD.ordinal(), SolutionCategory.SINGLE_DIGIT_PATTERNS, 120, 0, true, true, 3170, false, false),
-            new StepConfig(4010, SolutionType.HIDDEN_RECTANGLE, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 4010, false, false),
-            new StepConfig(4020, SolutionType.AVOIDABLE_RECTANGLE_1, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 4020, false, false),
-            new StepConfig(4030, SolutionType.AVOIDABLE_RECTANGLE_2, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 4030, false, false),
-            new StepConfig(5330, SolutionType.SIMPLE_COLORS, DifficultyType.HARD.ordinal(), SolutionCategory.COLORING, 150, 0, true, true, 5330, false, false),
-            new StepConfig(5360, SolutionType.MULTI_COLORS, DifficultyType.HARD.ordinal(), SolutionCategory.COLORING, 200, 0, true, true, 5360, false, false),
-            new StepConfig(8450, SolutionType.KRAKEN_FISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 500, 0, false, false, 8450, false, false),
-            new StepConfig(3120, SolutionType.TURBOT_FISH, DifficultyType.HARD.ordinal(), SolutionCategory.SINGLE_DIGIT_PATTERNS, 120, 0, true, true, 3120, false, false),
-            new StepConfig(1210, SolutionType.LOCKED_CANDIDATES_2, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 50, 0, true, true, 1210, true, false)
+            new StepConfig(1200, SolutionType.LOCKED_CANDIDATES_1, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 50, 0, true, true, 1200, false),
+            new StepConfig(1300, SolutionType.NAKED_PAIR, DifficultyType.MEDIUM.ordinal(), SolutionCategory.SUBSETS, 60, 0, true, true, 1300, false),
+            new StepConfig(1400, SolutionType.NAKED_TRIPLE, DifficultyType.MEDIUM.ordinal(), SolutionCategory.SUBSETS, 80, 0, true, true, 1400, false),
+            new StepConfig(1500, SolutionType.HIDDEN_PAIR, DifficultyType.MEDIUM.ordinal(), SolutionCategory.SUBSETS, 70, 0, true, true, 1500, false),
+            new StepConfig(1600, SolutionType.HIDDEN_TRIPLE, DifficultyType.MEDIUM.ordinal(), SolutionCategory.SUBSETS, 100, 0, true, true, 1600, false),
+            new StepConfig(2000, SolutionType.NAKED_QUADRUPLE, DifficultyType.HARD.ordinal(), SolutionCategory.SUBSETS, 120, 0, true, true, 2000, false),
+            new StepConfig(2100, SolutionType.HIDDEN_QUADRUPLE, DifficultyType.HARD.ordinal(), SolutionCategory.SUBSETS, 150, 0, true, true, 2100, false),
+            new StepConfig(2200, SolutionType.X_WING, DifficultyType.HARD.ordinal(), SolutionCategory.BASIC_FISH, 140, 0, true, false, 2200, false),
+            new StepConfig(2300, SolutionType.SWORDFISH, DifficultyType.HARD.ordinal(), SolutionCategory.BASIC_FISH, 150, 0, true, false, 2300, false),
+            new StepConfig(2400, SolutionType.JELLYFISH, DifficultyType.HARD.ordinal(), SolutionCategory.BASIC_FISH, 160, 0, true, false, 2400, false),
+            new StepConfig(2500, SolutionType.SQUIRMBAG, DifficultyType.UNFAIR.ordinal(), SolutionCategory.BASIC_FISH, 470, 0, false, false, 2500, false),
+            new StepConfig(2600, SolutionType.WHALE, DifficultyType.UNFAIR.ordinal(), SolutionCategory.BASIC_FISH, 470, 0, false, false, 2600, false),
+            new StepConfig(2700, SolutionType.LEVIATHAN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.BASIC_FISH, 470, 0, false, false, 2700, false),
+            new StepConfig(2800, SolutionType.REMOTE_PAIR, DifficultyType.HARD.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 110, 0, true, true, 2800, false),
+            new StepConfig(2900, SolutionType.BUG_PLUS_1, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 2900, false),
+            new StepConfig(3000, SolutionType.SKYSCRAPER, DifficultyType.HARD.ordinal(), SolutionCategory.SINGLE_DIGIT_PATTERNS, 130, 0, true, true, 3000, false),
+            new StepConfig(3200, SolutionType.W_WING, DifficultyType.HARD.ordinal(), SolutionCategory.WINGS, 150, 0, true, true, 3200, false),
+            new StepConfig(3100, SolutionType.TWO_STRING_KITE, DifficultyType.HARD.ordinal(), SolutionCategory.SINGLE_DIGIT_PATTERNS, 150, 0, true, true, 3100, false),
+            new StepConfig(3300, SolutionType.XY_WING, DifficultyType.HARD.ordinal(), SolutionCategory.WINGS, 160, 0, true, true, 3300, false),
+            new StepConfig(3400, SolutionType.XYZ_WING, DifficultyType.HARD.ordinal(), SolutionCategory.WINGS, 180, 0, true, true, 3400, false),
+            new StepConfig(3500, SolutionType.UNIQUENESS_1, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3500, false),
+            new StepConfig(3600, SolutionType.UNIQUENESS_2, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3600, false),
+            new StepConfig(3700, SolutionType.UNIQUENESS_3, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3700, false),
+            new StepConfig(3800, SolutionType.UNIQUENESS_4, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3800, false),
+            new StepConfig(3900, SolutionType.UNIQUENESS_5, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 3900, false),
+            new StepConfig(4000, SolutionType.UNIQUENESS_6, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 4000, false),
+            new StepConfig(4100, SolutionType.FINNED_X_WING, DifficultyType.HARD.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 130, 0, true, false, 4100, false),
+            new StepConfig(4200, SolutionType.SASHIMI_X_WING, DifficultyType.HARD.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 150, 0, true, false, 4200, false),
+            new StepConfig(4300, SolutionType.FINNED_SWORDFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 200, 0, true, false, 4300, false),
+            new StepConfig(4400, SolutionType.SASHIMI_SWORDFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 240, 0, true, false, 4400, false),
+            new StepConfig(4500, SolutionType.FINNED_JELLYFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 250, 0, true, false, 4500, false),
+            new StepConfig(4600, SolutionType.SASHIMI_JELLYFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 260, 0, true, false, 4600, false),
+            new StepConfig(4700, SolutionType.FINNED_SQUIRMBAG, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 4700, false),
+            new StepConfig(4800, SolutionType.SASHIMI_SQUIRMBAG, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 4800, false),
+            new StepConfig(4900, SolutionType.FINNED_WHALE, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 4900, false),
+            new StepConfig(5000, SolutionType.SASHIMI_WHALE, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 5000, false),
+            new StepConfig(5100, SolutionType.FINNED_LEVIATHAN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 5100, false),
+            new StepConfig(5200, SolutionType.SASHIMI_LEVIATHAN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_BASIC_FISH, 470, 0, false, false, 5200, false),
+            new StepConfig(5300, SolutionType.SUE_DE_COQ, DifficultyType.UNFAIR.ordinal(), SolutionCategory.MISCELLANEOUS, 250, 0, true, true, 5300, false),
+            new StepConfig(5400, SolutionType.X_CHAIN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 260, 0, true, true, 5400, false),
+            new StepConfig(5500, SolutionType.XY_CHAIN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 260, 0, true, true, 5500, false),
+            new StepConfig(5600, SolutionType.NICE_LOOP, DifficultyType.UNFAIR.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 280, 0, true, true, 5600, false),
+            new StepConfig(5700, SolutionType.ALS_XZ, DifficultyType.UNFAIR.ordinal(), SolutionCategory.ALMOST_LOCKED_SETS, 300, 0, true, true, 5700, false),
+            new StepConfig(5800, SolutionType.ALS_XY_WING, DifficultyType.UNFAIR.ordinal(), SolutionCategory.ALMOST_LOCKED_SETS, 320, 0, true, true, 5800, false),
+            new StepConfig(5900, SolutionType.ALS_XY_CHAIN, DifficultyType.UNFAIR.ordinal(), SolutionCategory.ALMOST_LOCKED_SETS, 340, 0, true, true, 5900, false),
+            new StepConfig(6000, SolutionType.DEATH_BLOSSOM, DifficultyType.UNFAIR.ordinal(), SolutionCategory.ALMOST_LOCKED_SETS, 360, 0, false, true, 6000, false),
+            new StepConfig(6100, SolutionType.FRANKEN_X_WING, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FRANKEN_FISH, 300, 0, true, false, 6100, false),
+            new StepConfig(6200, SolutionType.FRANKEN_SWORDFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FRANKEN_FISH, 350, 0, true, false, 6200, false),
+            new StepConfig(6300, SolutionType.FRANKEN_JELLYFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FRANKEN_FISH, 370, 0, false, false, 6300, false),
+            new StepConfig(6400, SolutionType.FRANKEN_SQUIRMBAG, DifficultyType.EXTREME.ordinal(), SolutionCategory.FRANKEN_FISH, 470, 0, false, false, 6400, false),
+            new StepConfig(6500, SolutionType.FRANKEN_WHALE, DifficultyType.EXTREME.ordinal(), SolutionCategory.FRANKEN_FISH, 470, 0, false, false, 6500, false),
+            new StepConfig(6600, SolutionType.FRANKEN_LEVIATHAN, DifficultyType.EXTREME.ordinal(), SolutionCategory.FRANKEN_FISH, 470, 0, false, false, 6600, false),
+            new StepConfig(6700, SolutionType.FINNED_FRANKEN_X_WING, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 390, 0, true, false, 6700, false),
+            new StepConfig(6800, SolutionType.FINNED_FRANKEN_SWORDFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 410, 0, true, false, 6800, false),
+            new StepConfig(6900, SolutionType.FINNED_FRANKEN_JELLYFISH, DifficultyType.UNFAIR.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 430, 0, false, false, 6900, false),
+            new StepConfig(7000, SolutionType.FINNED_FRANKEN_SQUIRMBAG, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 470, 0, false, false, 7000, false),
+            new StepConfig(7100, SolutionType.FINNED_FRANKEN_WHALE, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 470, 0, false, false, 7100, false),
+            new StepConfig(7200, SolutionType.FINNED_FRANKEN_LEVIATHAN, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_FRANKEN_FISH, 470, 0, false, false, 7200, false),
+            new StepConfig(7300, SolutionType.MUTANT_X_WING, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 450, 0, false, false, 7300, false),
+            new StepConfig(7400, SolutionType.MUTANT_SWORDFISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 450, 0, false, false, 7400, false),
+            new StepConfig(7500, SolutionType.MUTANT_JELLYFISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 450, 0, false, false, 7500, false),
+            new StepConfig(7600, SolutionType.MUTANT_SQUIRMBAG, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 470, 0, false, false, 7600, false),
+            new StepConfig(7700, SolutionType.MUTANT_WHALE, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 470, 0, false, false, 7700, false),
+            new StepConfig(7800, SolutionType.MUTANT_LEVIATHAN, DifficultyType.EXTREME.ordinal(), SolutionCategory.MUTANT_FISH, 470, 0, false, false, 7800, false),
+            new StepConfig(7900, SolutionType.FINNED_MUTANT_X_WING, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 7900, false),
+            new StepConfig(8000, SolutionType.FINNED_MUTANT_SWORDFISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8000, false),
+            new StepConfig(8100, SolutionType.FINNED_MUTANT_JELLYFISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8100, false),
+            new StepConfig(8200, SolutionType.FINNED_MUTANT_SQUIRMBAG, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8200, false),
+            new StepConfig(8300, SolutionType.FINNED_MUTANT_WHALE, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8300, false),
+            new StepConfig(8400, SolutionType.FINNED_MUTANT_LEVIATHAN, DifficultyType.EXTREME.ordinal(), SolutionCategory.FINNED_MUTANT_FISH, 470, 0, false, false, 8400, false),
+            new StepConfig(8700, SolutionType.TEMPLATE_SET, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 10000, 0, false, false, 8700, false),
+            new StepConfig(8800, SolutionType.TEMPLATE_DEL, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 10000, 0, false, false, 8800, false),
+            new StepConfig(8500, SolutionType.FORCING_CHAIN, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 500, 0, true, false, 8500, false),
+            new StepConfig(8600, SolutionType.FORCING_NET, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 700, 0, true, false, 8600, false),
+            new StepConfig(8900, SolutionType.BRUTE_FORCE, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 10000, 0, true, false, 8900, false),
+            new StepConfig(5650, SolutionType.GROUPED_NICE_LOOP, DifficultyType.UNFAIR.ordinal(), SolutionCategory.CHAINS_AND_LOOPS, 300, 0, true, true, 5650, false),
+            new StepConfig(3170, SolutionType.EMPTY_RECTANGLE, DifficultyType.HARD.ordinal(), SolutionCategory.SINGLE_DIGIT_PATTERNS, 120, 0, true, true, 3170, false),
+            new StepConfig(4010, SolutionType.HIDDEN_RECTANGLE, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 4010, false),
+            new StepConfig(4020, SolutionType.AVOIDABLE_RECTANGLE_1, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 4020, false),
+            new StepConfig(4030, SolutionType.AVOIDABLE_RECTANGLE_2, DifficultyType.HARD.ordinal(), SolutionCategory.UNIQUENESS, 100, 0, true, true, 4030, false),
+            new StepConfig(5330, SolutionType.SIMPLE_COLORS, DifficultyType.HARD.ordinal(), SolutionCategory.COLORING, 150, 0, true, true, 5330, false),
+            new StepConfig(5360, SolutionType.MULTI_COLORS, DifficultyType.HARD.ordinal(), SolutionCategory.COLORING, 200, 0, true, true, 5360, false),
+            new StepConfig(8450, SolutionType.KRAKEN_FISH, DifficultyType.EXTREME.ordinal(), SolutionCategory.LAST_RESORT, 500, 0, false, false, 8450, false),
+            new StepConfig(3120, SolutionType.TURBOT_FISH, DifficultyType.HARD.ordinal(), SolutionCategory.SINGLE_DIGIT_PATTERNS, 120, 0, true, true, 3120, false),
+            new StepConfig(1210, SolutionType.LOCKED_CANDIDATES_2, DifficultyType.MEDIUM.ordinal(), SolutionCategory.INTERSECTIONS, 50, 0, true, true, 1210, false)
     };
     // nicht sortierte steps mit allen Änderungen -> wird so in *.cfg-File geschrieben
     private StepConfig[] orgSolverSteps = null;
@@ -656,8 +655,7 @@ public final class Options {
         DifficultyLevel[] dest = new DifficultyLevel[src.length];
         for (int i = 0; i < src.length; i++) {
             DifficultyLevel act = src[i];
-            dest[i] = new DifficultyLevel(act.getType(), act.getMaxScore(),
-                    act.getName(), act.getBackgroundColor(), act.getForegroundColor());
+            dest[i] = new DifficultyLevel(act.getType(), act.getMaxScore(), act.getName());
         }
         return dest;
     }
@@ -691,25 +689,25 @@ public final class Options {
                 StepConfig act = src[i + 2];
                 dest[i] = new StepConfig(act.getIndex(), act.getType(), act.getLevel(), act.getCategory(),
                         act.getBaseScore(), act.getAdminScore(), act.isEnabled(), act.isAllStepsEnabled(),
-                        act.getIndexProgress(), act.isEnabledProgress(), act.isEnabledTraining());
+                        act.getIndexProgress(), act.isEnabledTraining());
             }
         } else {
             for (int i = 0; i < (addLastTwo ? length - 2 : length); i++) {
                 StepConfig act = src[i];
                 dest[i] = new StepConfig(act.getIndex(), act.getType(), act.getLevel(), act.getCategory(),
                         act.getBaseScore(), act.getAdminScore(), act.isEnabled(), act.isAllStepsEnabled(),
-                        act.getIndexProgress(), act.isEnabledProgress(), act.isEnabledTraining());
+                        act.getIndexProgress(), act.isEnabledTraining());
             }
         }
         if (addLastTwo) {
             StepConfig act = DEFAULT_SOLVER_STEPS[0];
             dest[dest.length - 2] = new StepConfig(act.getIndex(), act.getType(), act.getLevel(), act.getCategory(),
                     act.getBaseScore(), act.getAdminScore(), act.isEnabled(), act.isAllStepsEnabled(),
-                    act.getIndexProgress(), act.isEnabledProgress(), act.isEnabledTraining());
+                    act.getIndexProgress(), act.isEnabledTraining());
             act = DEFAULT_SOLVER_STEPS[1];
             dest[dest.length - 1] = new StepConfig(act.getIndex(), act.getType(), act.getLevel(), act.getCategory(),
                     act.getBaseScore(), act.getAdminScore(), act.isEnabled(), act.isAllStepsEnabled(),
-                    act.getIndexProgress(), act.isEnabledProgress(), act.isEnabledTraining());
+                    act.getIndexProgress(), act.isEnabledTraining());
         }
         if (!noSort) {
             if (sortProgress) {

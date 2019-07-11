@@ -2,8 +2,6 @@ package sudoku.lite;
 
 import sudoku.lite.solver.SudokuSolver;
 
-import java.awt.*;
-
 //        sudoku.setSudoku("+-------+-------+-------+\n" +
 //                "         | . . . | . . . | . . . |\n" +
 //                "         | . . . | . . . | . . . |\n" +
@@ -38,11 +36,7 @@ public class Main {
                 "         +-------+-------+-------+");
 
         SudokuSolver solver = new SudokuSolver();
-        solver.solve(new DifficultyLevel(DifficultyType.EXTREME, Integer.MAX_VALUE, "Extreme", new Color(255, 100, 100), Color.BLACK),
-                sudoku.clone(),
-                true,
-                false,
-                Options.getInstance().solverSteps);
+        solver.solve(sudoku.clone());
 
         for (SolutionStep step : solver.getSteps()) {
             System.out.println(step);

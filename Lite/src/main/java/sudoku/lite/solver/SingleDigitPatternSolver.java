@@ -847,7 +847,7 @@ public class SingleDigitPatternSolver extends AbstractSolver {
         sudoku.setSudoku(":0401:3:9.567.1..61.5+4...+9.849+3+15+6....8.39.....+2.+9....+987.4...+5+61.+9782.+8+7+9.+26.51..2+1857+96:249 261 165 367 369:328::");
 
         SudokuSolver solver = SudokuSolverFactory.getDefaultSolverInstance();
-        SolutionStep step = solver.getHint(sudoku, false);
+        SolutionStep step = solver.getHint(sudoku);
         System.out.println(step);
         System.exit(0);
     }

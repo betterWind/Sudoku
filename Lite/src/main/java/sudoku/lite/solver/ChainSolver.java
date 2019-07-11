@@ -1205,7 +1205,7 @@ public class ChainSolver extends AbstractSolver {
         SudokuSolver solver = SudokuSolverFactory.getDefaultSolverInstance();
         boolean singleHint = false;
         if (singleHint) {
-            SolutionStep step = solver.getHint(sudoku, false);
+            SolutionStep step = solver.getHint(sudoku);
             System.out.println(step);
         } else {
             List<SolutionStep> steps = solver.getStepFinder().getAllChains(sudoku);

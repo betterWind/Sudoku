@@ -33,7 +33,6 @@ public final class StepConfig implements Cloneable, Comparable<StepConfig> {
     private boolean enabled;           // used in solution?
     private boolean allStepsEnabled;   // searched for when all steps are found?
     private int indexProgress;         // search order when rating the efficiency of steps
-    private boolean enabledProgress; // enabled when rating the efficiency of steps
     private boolean enabledTraining;   // enabled for traing/practising mode
     
     /** Creates a new instance of StepConfig */
@@ -42,7 +41,7 @@ public final class StepConfig implements Cloneable, Comparable<StepConfig> {
     
     public StepConfig(int index, SolutionType type, int level, SolutionCategory category,
                       int baseScore, int adminScore, boolean enabled, boolean allStepsEnabled,
-                      int indexProgress, boolean enabledProgress, boolean enabledTraining) {
+                      int indexProgress, boolean enabledTraining) {
         setIndex(index);
         setType(type);
         setLevel(level);
@@ -52,7 +51,6 @@ public final class StepConfig implements Cloneable, Comparable<StepConfig> {
         setEnabled(enabled);
         setAllStepsEnabled(allStepsEnabled);
         setIndexProgress(indexProgress);
-        setEnabledProgress(enabledProgress);
         setEnabledTraining(enabledTraining);
     }
 
@@ -149,14 +147,6 @@ public final class StepConfig implements Cloneable, Comparable<StepConfig> {
 
     public void setIndexProgress(int indexProgress) {
         this.indexProgress = indexProgress;
-    }
-
-    public boolean isEnabledProgress() {
-        return enabledProgress;
-    }
-
-    public void setEnabledProgress(boolean enabledProgress) {
-        this.enabledProgress = enabledProgress;
     }
 
     /**

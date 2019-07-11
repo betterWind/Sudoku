@@ -487,7 +487,7 @@ public class MiscellaneousSolver extends AbstractSolver {
         SudokuSolver solver = SudokuSolverFactory.getDefaultSolverInstance();
         boolean singleHint = true;
         if (singleHint) {
-            SolutionStep step = solver.getHint(sudoku, false);
+            SolutionStep step = solver.getHint(sudoku);
             System.out.println(step);
         } else {
             List<SolutionStep> steps = solver.getStepFinder().getAllSueDeCoqs(sudoku);

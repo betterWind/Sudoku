@@ -412,7 +412,7 @@ public class WingSolver extends AbstractSolver {
         sudoku.setSudoku(":0800:123:..+8+2..57.+7.+54....+8..9+8+57...4+5+17+2+98+6+3+2765+83+94+1+9+8+3+6+1+4+7+526+9+23+4+5+1+8+7537+168...+81+4+9+726+3+5::337::");
 
         SudokuSolver solver = SudokuSolverFactory.getDefaultSolverInstance();
-        SolutionStep step = solver.getHint(sudoku, false);
+        SolutionStep step = solver.getHint(sudoku);
         System.out.println(step);
         System.out.println(sudoku.getSudoku(ClipboardMode.LIBRARY, step));
         System.exit(0);
