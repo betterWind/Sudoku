@@ -199,7 +199,7 @@ public class TablingSolver extends AbstractSolver {
     public TablingSolver(SudokuStepFinder finder) {
         super(finder);
 
-        simpleFinder = new SudokuStepFinder(true);
+        simpleFinder = new SudokuStepFinder();
 
         for (int i = 0; i < tmpOnSets.length; i++) {
             tmpOnSets[i] = new SudokuSet();

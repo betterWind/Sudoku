@@ -479,26 +479,4 @@ public class MiscellaneousSolver extends AbstractSolver {
             }
         }
     }
-
-    public static void main(String[] args) {
-        Sudoku sudoku = new Sudoku();
-        // Sue de Coq: r7c45 - {123689} (r7c128 - {2389}, r9c6 - {16}) => r8c46,r9c4<>1, r8c456,r9c4<>6, r7c3<>2, r7c3<>9
-        sudoku.setSudoku(":1101:12369:.....3+5+1+7+1+3+5+42+786+9867+91+54..+6+935+4+82+717183.+2.+54+2+54...........47.55......+4.....+5..9.::184 194 273 371 684 685 694 985::");
-        SudokuSolver solver = SudokuSolverFactory.getDefaultSolverInstance();
-        boolean singleHint = true;
-        if (singleHint) {
-            SolutionStep step = solver.getHint(sudoku);
-            System.out.println(step);
-        } else {
-            List<SolutionStep> steps = solver.getStepFinder().getAllSueDeCoqs(sudoku);
-            solver.getStepFinder().printStatistics();
-            if (steps.size() > 0) {
-                Collections.sort(steps);
-                for (SolutionStep actStep : steps) {
-                    System.out.println(actStep);
-                }
-            }
-        }
-        System.exit(0);
-    }
 }

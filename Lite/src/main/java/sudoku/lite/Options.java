@@ -194,7 +194,6 @@ public final class Options {
     public static final boolean ALL_STEPS_ONLY_ONE_ALS_PER_STEP = true; // only one step in every ALS elimination
     public static final boolean ALL_STEPS_ALLOW_ALS_OVERLAP = true;    // allow ALS steps with overlap (runtime!)
     private boolean onlyOneAlsPerStep = ONLY_ONE_ALS_PER_STEP;
-    private boolean allowAlsOverlap = ALLOW_ALS_OVERLAP;
     private boolean allStepsOnlyOneAlsPerStep = ALL_STEPS_ONLY_ONE_ALS_PER_STEP;
     private boolean allStepsAllowAlsOverlap = ALL_STEPS_ALLOW_ALS_OVERLAP;
     // FishSolver
@@ -2115,11 +2114,7 @@ public final class Options {
     }
 
     public boolean isAllowAlsOverlap() {
-        return allowAlsOverlap;
-    }
-
-    public void setAllowAlsOverlap(boolean allowAlsOverlap) {
-        this.allowAlsOverlap = allowAlsOverlap;
+        return false;
     }
 
     public boolean isAllStepsOnlyOneAlsPerStep() {

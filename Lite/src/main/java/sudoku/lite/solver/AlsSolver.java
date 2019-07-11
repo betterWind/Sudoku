@@ -251,7 +251,7 @@ public class AlsSolver extends AbstractSolver {
             millis1 = System.nanoTime();
         }
         collectAllAlses();
-        collectAllRestrictedCommons(Options.getInstance().isAllowAlsOverlap());
+        collectAllRestrictedCommons(false);
         if (doXz) {
             steps.clear();
             getAlsXZInt(false);
@@ -332,7 +332,7 @@ public class AlsSolver extends AbstractSolver {
     private SolutionStep getAlsXYChain() {
         steps.clear();
         collectAllAlses();
-        collectAllRestrictedCommons(Options.getInstance().isAllowAlsOverlap());
+        collectAllRestrictedCommons(false);
         getAlsXYChainInt();
         if (steps.size() > 0) {
             Collections.sort(steps, alsComparator);
@@ -352,7 +352,7 @@ public class AlsSolver extends AbstractSolver {
     private SolutionStep getAlsXYWing(boolean onlyOne) {
         steps.clear();
         collectAllAlses();
-        collectAllRestrictedCommons(Options.getInstance().isAllowAlsOverlap());
+        collectAllRestrictedCommons(false);
         SolutionStep step = getAlsXYWingInt(onlyOne);
         if (!onlyOne && steps.size() > 0) {
             Collections.sort(steps, alsComparator);
@@ -376,7 +376,7 @@ public class AlsSolver extends AbstractSolver {
         anzCalls++;
         steps.clear();
         collectAllAlses();
-        collectAllRestrictedCommons(Options.getInstance().isAllowAlsOverlap());
+        collectAllRestrictedCommons(false);
         SolutionStep step = getAlsXZInt(onlyOne);
         if (!onlyOne && steps.size() > 0) {
             Collections.sort(steps, alsComparator);
@@ -501,13 +501,11 @@ public class AlsSolver extends AbstractSolver {
                     a = alses.get(rc1.getAls1());
                     b = alses.get(rc2.getAls1());
                 }
-                if (!Options.getInstance().isAllowAlsOverlap()) {
-                    // Check overlaps: the RCs have already been checked, a and b are missing:
-                    tmpSet.set(a.indices);
-                    if (!tmpSet.andEmpty(b.indices)) {
-                        // overlap -> not allowed
-                        continue;
-                    }
+                // Check overlaps: the RCs have already been checked, a and b are missing:
+                tmpSet.set(a.indices);
+                if (!tmpSet.andEmpty(b.indices)) {
+                    // overlap -> not allowed
+                    continue;
                 }
                 // even if overlaps are allowed, a(b) must not be a subset of b (a)
                 tmpSet.set(a.indices);
@@ -856,7 +854,7 @@ public class AlsSolver extends AbstractSolver {
                 Als als = alses.get(aktRcdb.alsPerCandidate[cand][i]);
                 //if (DEBUG) System.out.println("cand = " + cand + ", i = " + i + ", ALS: " + als.toString());
                 // check for overlap
-                if (!Options.getInstance().isAllowAlsOverlap() && !als.indices.andNotEquals(aktDBIndices)) {
+                if (!als.indices.andNotEquals(aktDBIndices)) {
                     // new ALS overlaps -> we dont need to look further
                     //if (DEBUG) System.out.println(" Overlap!");
                     continue;
