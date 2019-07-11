@@ -540,6 +540,8 @@ public class Sudoku implements Cloneable {
      * @param saveInitialState
      */
     public void setSudoku(String init, boolean saveInitialState) {
+        long start = System.currentTimeMillis();
+
         clearSudoku();
         if (init == null) {
             return;
@@ -785,6 +787,8 @@ public class Sudoku implements Cloneable {
             System.out.println("anzLines: " + anzLines);
         }
 
+        System.out.println("Time1: " + (System.currentTimeMillis() - start));
+
         // special case SimpleSudoku: contains PM grid and one liner -> ignore one liner
         if (anzLines == 10) {
             anzLines--;
@@ -826,6 +830,8 @@ public class Sudoku implements Cloneable {
                 System.out.println("anzLines: " + anzLines);
             }
         }
+
+        System.out.println("Time2: " + (System.currentTimeMillis() - start));
 
         // if we have a PM grid, candidates are parsed to cands; for one liners the cells are set directly
         int sRow = 0;
@@ -900,6 +906,8 @@ public class Sudoku implements Cloneable {
             }
         }
 
+        System.out.println("Time3: " + (System.currentTimeMillis() - start));
+
         if (isPmGrid) {
             // set the sudoku: set all candidates in a first pass; then check for all cells,
             // that contain only one candidate, if that candidate is set in a buddy; if not,
@@ -960,6 +968,8 @@ public class Sudoku implements Cloneable {
             }
         }
 
+        System.out.println("Time4: " + (System.currentTimeMillis() - start));
+
         // delete candidates for library format
         if (libraryFormat && libraryCandStr.length() > 0) {
             String[] candArr = libraryCandStr.split(" ");
@@ -995,6 +1005,8 @@ public class Sudoku implements Cloneable {
         // for the GUI,status and statusGivens are checked elsewhere
         status = SudokuStatus.VALID;
         statusGivens = SudokuStatus.VALID;
+
+        System.out.println("Time5: " + (System.currentTimeMillis() - start));
     }
 
     /**

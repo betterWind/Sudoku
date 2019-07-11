@@ -20,7 +20,6 @@
 package sudoku.lite;
 
 /**
- *
  * @author hobiwan
  */
 public final class StepConfig implements Cloneable, Comparable<StepConfig> {
@@ -34,11 +33,7 @@ public final class StepConfig implements Cloneable, Comparable<StepConfig> {
     private boolean allStepsEnabled;   // searched for when all steps are found?
     private int indexProgress;         // search order when rating the efficiency of steps
     private boolean enabledTraining;   // enabled for traing/practising mode
-    
-    /** Creates a new instance of StepConfig */
-    public StepConfig() {
-    }
-    
+
     public StepConfig(int index, SolutionType type, int level, SolutionCategory category,
                       int baseScore, int adminScore, boolean enabled, boolean allStepsEnabled,
                       int indexProgress, boolean enabledTraining) {
@@ -58,20 +53,11 @@ public final class StepConfig implements Cloneable, Comparable<StepConfig> {
     public String toString() {
         return type.getStepName();
     }
-    
+
     public SolutionType getType() {
         return type;
     }
 
-    public static String getLevelName(int level) {
-        return Options.getInstance().getDifficultyLevels()[level].getName();
-    }
-    
-    public static String getLevelName(DifficultyLevel level) {
-        //return level.getName();
-        return Options.getInstance().getDifficultyLevels()[level.getOrdinal()].getName();
-    }
-    
     public void setType(SolutionType type) {
         this.type = type;
     }

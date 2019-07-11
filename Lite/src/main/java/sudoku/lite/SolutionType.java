@@ -331,7 +331,7 @@ public enum SolutionType {
             type = SolutionType.MULTI_COLORS;
         }
 
-        StepConfig[] configs = Options.getInstance().solverSteps;
+        StepConfig[] configs = Config.DEFAULT_SOLVER_STEPS;
         for (int i = 0; i < configs.length; i++) {
             if (configs[i].getType() == type) {
                 return configs[i];

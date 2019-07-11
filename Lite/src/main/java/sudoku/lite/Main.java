@@ -18,9 +18,10 @@ import sudoku.lite.solver.SudokuSolver;
 
 public class Main {
     public static void main(String[] args) {
-        long start = System.currentTimeMillis();
+//        long start = System.currentTimeMillis();
 
         Sudoku sudoku = new Sudoku();
+//        System.out.println("Time1: " + (System.currentTimeMillis() - start));
         sudoku.setSudoku("+-------+-------+-------+\n" +
                 "         | . 9 . | . . . | 3 . . |\n" +
                 "         | . . . | 3 7 . | . 4 . |\n" +
@@ -35,13 +36,15 @@ public class Main {
                 "         | . . 3 | . . . | . 9 . |\n" +
                 "         +-------+-------+-------+");
 
+//        System.out.println("Time2: " + (System.currentTimeMillis() - start));
         SudokuSolver solver = new SudokuSolver();
         solver.solve(sudoku.clone());
+//        System.out.println("Time3: " + (System.currentTimeMillis() - start));
 
         for (SolutionStep step : solver.getSteps()) {
             System.out.println(step);
         }
+//        System.out.println("Time4: " + (System.currentTimeMillis() - start));
 
-        System.out.println("Time: " + (System.currentTimeMillis() - start));
     }
 }
